@@ -14,7 +14,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@android:style/Theme.DeviceDefault">
-        <activity android:name=".Chapters"></activity>
+        <activity android:name=".Verses"></activity>
+        <activity android:name=".Chapters" />
         <activity android:name=".MgaAklat" />
         <activity android:name=".AlphaOrder" />
 

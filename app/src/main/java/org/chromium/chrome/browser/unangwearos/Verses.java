@@ -1,31 +1,29 @@
 package org.chromium.chrome.browser.unangwearos;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.arch.core.executor.TaskExecutor;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.TextView;
 
-public class Chapters extends WearableActivity {
+public class Verses extends WearableActivity {
 
-    TextView tvAklat, tvChapter;
-    String aklat, chapter;
-
+    TextView tvTalata, tvVerse;
+    String aklat, chapter, verse;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_chapters);
+        setContentView(R.layout.activity_verses);
 
-        tvAklat = findViewById(R.id.tvAklat);
-        tvChapter = findViewById(R.id.tvChapter);
+        tvTalata = findViewById(R.id.tvTalata);
+        tvVerse = findViewById(R.id.tvVerse);
 
         aklat = getIntent().getStringExtra("aklat");
-        tvAklat.setText(aklat);
-
-
+        chapter = getIntent().getStringExtra("chapter");
+        tvTalata.setText(aklat + " " + chapter + " :");
     }
 
     public void onNumberClickChapter(View view) {
@@ -64,22 +62,15 @@ public class Chapters extends WearableActivity {
         }
     }
     public void onInputNumbers(int num){
-        String inputChapter = tvChapter.getText().toString();
-        chapter = inputChapter + num;
-        tvChapter.setText(chapter);
+        String inputChapter = tvVerse.getText().toString();
+        verse = inputChapter + num;
+        tvVerse.setText(verse);
     }
 
     public void allClear(View view){
-        tvChapter.setText("");
-
-
+        tvVerse.setText("");
     }
-    public void onInputChapter(View view){
-        String book = aklat;
-        String chapters = chapter;
-        Intent theIntent = new Intent(Chapters.this, Verses.class);
-        theIntent.putExtra("aklat", book);
-        theIntent.putExtra("chapter", chapters);
-        startActivity(theIntent);
+    public void onInputVerse(View view){
+
     }
 }
