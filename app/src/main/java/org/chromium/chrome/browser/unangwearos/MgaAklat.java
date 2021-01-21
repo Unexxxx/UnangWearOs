@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.wearable.activity.WearableActivity;
 import android.util.Log;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -40,11 +42,16 @@ public class MgaAklat extends WearableActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-                String books = verseS.getItem(position);
-                saveToSharedPref(books);
+//                String books = verseS.getItem(position);
+//                saveToSharedPref(books);
 
-                Intent intent = new Intent(MgaAklat.this, MainActivity.class);
-                startActivity(intent);
+//                Intent myIntent = new Intent(MgaAklat.this, Chapters.class);
+//                startActivity(myIntent);
+
+                String value = (String) parent.getItemAtPosition(position);
+                Intent theIntent = new Intent(MgaAklat.this, Chapters.class);
+                theIntent.putExtra("aklat", value);
+                startActivity(theIntent);
             }
         });
 
