@@ -42,11 +42,6 @@ public class MgaAklat extends WearableActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-//                String books = verseS.getItem(position);
-//                saveToSharedPref(books);
-
-//                Intent myIntent = new Intent(MgaAklat.this, Chapters.class);
-//                startActivity(myIntent);
 
                 String value = (String) parent.getItemAtPosition(position);
                 Intent theIntent = new Intent(MgaAklat.this, Chapters.class);
@@ -63,22 +58,5 @@ public class MgaAklat extends WearableActivity {
 //        setAmbientEnabled();
     }
 
-    private void saveToSharedPref(String book){
-        Gson gson = new Gson();
-
-        SharedPreferences aklatSharedPref = getSharedPreferences("bibiliyeah", Context.MODE_PRIVATE);
-        String aklatData = aklatSharedPref.getString("MGA_AKLAT", null);
-
-        ArrayList<String> data = new ArrayList<>();
-        if(aklatData != null){
-            data = gson.fromJson(aklatData, new TypeToken<List<String>>(){}.getType());
-        }
-        data.add(book);
-
-        String dataString = gson.toJson(data);
-        SharedPreferences.Editor editor = aklatSharedPref.edit();
-        editor.putString("MGA_AKLAT", dataString);
-        editor.commit();
-    }
 
 }

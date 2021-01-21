@@ -3,15 +3,25 @@ package org.chromium.chrome.browser.unangwearos;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.arch.core.executor.TaskExecutor;
 
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class Verses extends WearableActivity {
 
     TextView tvTalata, tvVerse;
     String aklat, chapter, verse;
+    String verses;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,7 +33,8 @@ public class Verses extends WearableActivity {
 
         aklat = getIntent().getStringExtra("aklat");
         chapter = getIntent().getStringExtra("chapter");
-        tvTalata.setText(aklat + " " + chapter + " :");
+        verses = aklat + " " + chapter + " :";
+        tvTalata.setText(verses);
     }
 
     public void onNumberClickChapter(View view) {
@@ -71,6 +82,28 @@ public class Verses extends WearableActivity {
         tvVerse.setText("");
     }
     public void onInputVerse(View view){
+        String books = verses + verse;
+        saveToSharedPref(books);
 
+        Intent theIntent = new Intent(Verses.this, MainActivity.class);
+        startActivity(theIntent);
+    }
+
+    private void saveToSharedPref(String book){
+        Gson gson = new Gson();
+
+        SharedPreferences aklatSharedPref = getSharedPreferences("bibiliyeah", Context.MODE_PRIVATE);
+        String aklatData = aklatSharedPref.getString("MGA_AKLAT", null);
+
+        ArrayList<String> data = new ArrayList<>();
+        if(aklatData != null){
+            data = gson.fromJson(aklatData, new TypeToken<List<String>>(){}.getType());
+        }
+        data.add(book);
+
+        String dataString = gson.toJson(data);
+        SharedPreferences.Editor editor = aklatSharedPref.edit();
+        editor.putString("MGA_AKLAT", dataString);
+        editor.commit();
     }
 }
