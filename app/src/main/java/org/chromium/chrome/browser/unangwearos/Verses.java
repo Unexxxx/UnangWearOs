@@ -20,7 +20,7 @@ import java.util.List;
 public class Verses extends WearableActivity {
 
     TextView tvTalata, tvVerse;
-    String aklat, chapter, verse;
+    String aklat, chapter, verse, inputChapter;
     String verses;
 
     @Override
@@ -72,8 +72,12 @@ public class Verses extends WearableActivity {
                 break;
         }
     }
+
+    public void onClickDash(View view){
+        tvVerse.setText(verse + "-");
+    }
     public void onInputNumbers(int num){
-        String inputChapter = tvVerse.getText().toString();
+        inputChapter = tvVerse.getText().toString();
         verse = inputChapter + num;
         tvVerse.setText(verse);
     }

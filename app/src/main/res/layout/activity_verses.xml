@@ -195,6 +195,16 @@
                         android:background="@drawable/round_button"
                         android:text="0" />
 
+                    <Button
+                        android:id="@+id/btnDash"
+                        android:layout_width="0dp"
+                        android:onClick="onClickDash"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:textColor="#9DA5A7"
+                        android:background="@drawable/round_button"
+                        android:text="-" />
+
 
                     <Button
                         android:onClick="onInputVerse"
@@ -204,6 +214,7 @@
                         android:textColor="#9DA5A7"
                         android:background="@drawable/round_button"
                         android:text="✅" />
+
 
                 </LinearLayout>
 
