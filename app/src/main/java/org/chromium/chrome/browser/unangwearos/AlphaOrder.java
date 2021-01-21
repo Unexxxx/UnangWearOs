@@ -1,7 +1,5 @@
 package org.chromium.chrome.browser.unangwearos;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
@@ -38,26 +36,22 @@ public class AlphaOrder extends WearableActivity {
     public void aOrder(String aOrder){
         switch (aOrder){
             case "a-g":
-                Toast.makeText(this, "This is A-G!!!", Toast.LENGTH_LONG).show();
-                mgaAklat();
+                Intent intent = new Intent(AlphaOrder.this, MgaAklat1.class);
+                startActivity(intent);
                 break;
             case "h-n":
-                Toast.makeText(this, "This is H-N!!!", Toast.LENGTH_LONG).show();
-                mgaAklat();
+                Intent intent1 = new Intent(AlphaOrder.this, MgaAklat2.class);
+                startActivity(intent1);
                 break;
             case "o-u":
-                Toast.makeText(this, "This is O-U!!!", Toast.LENGTH_LONG).show();
-                mgaAklat();
+                Intent intent2 = new Intent(AlphaOrder.this, MgaAklat3.class);
+                startActivity(intent2);
                 break;
             case "v-z":
-                Toast.makeText(this, "This is V-Z!!!", Toast.LENGTH_LONG).show();
-                mgaAklat();
+                Intent intent3 = new Intent(AlphaOrder.this, MgaAklat4.class);
+                startActivity(intent3);
                 break;
         }
     }
 
-    public void mgaAklat(){
-        Intent intent = new Intent(AlphaOrder.this,MgaAklat.class);
-        startActivity(intent);
-    }
 }
