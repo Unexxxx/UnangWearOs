@@ -33,7 +33,7 @@ public class Verses extends WearableActivity {
 
         aklat = getIntent().getStringExtra("aklat");
         chapter = getIntent().getStringExtra("chapter");
-        verses = aklat + " " + chapter + " :";
+        verses = aklat + " " + chapter + " : ";
         tvTalata.setText(verses);
     }
 
@@ -75,6 +75,9 @@ public class Verses extends WearableActivity {
 
     public void onClickDash(View view){
         tvVerse.setText(verse + "-");
+    }
+    public void onClickComma(View view){
+        tvVerse.setText(verse + ", ");
     }
     public void onInputNumbers(int num){
         inputChapter = tvVerse.getText().toString();
