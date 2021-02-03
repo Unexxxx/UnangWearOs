@@ -7,11 +7,12 @@ import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class Chapters extends WearableActivity {
 
     TextView tvAklat, tvChapter;
-    String aklat, chapter;
+    String aklat, chapter, inputChapter;
 
 
     @Override
@@ -64,22 +65,32 @@ public class Chapters extends WearableActivity {
         }
     }
     public void onInputNumbers(int num){
-        String inputChapter = tvChapter.getText().toString();
-        chapter = inputChapter + num;
-        tvChapter.setText(chapter);
+        if(num == 0 && inputChapter == null){
+            tvChapter.setText("");
+        }else{
+            inputChapter = tvChapter.getText().toString();
+            chapter = inputChapter + num;
+            tvChapter.setText(chapter);
+        }
     }
 
     public void allClear(View view){
         tvChapter.setText("");
-
+        chapter = "";
+        inputChapter = null;
 
     }
     public void onInputChapter(View view){
-        String book = aklat;
-        String chapters = chapter;
-        Intent theIntent = new Intent(Chapters.this, Verses.class);
-        theIntent.putExtra("aklat", book);
-        theIntent.putExtra("chapter", chapters);
-        startActivity(theIntent);
+        if(chapter == ""){
+            Toast.makeText(this, "Please input Chapter", Toast.LENGTH_SHORT).show();
+        }else{
+            String book = aklat;
+            String chapters = chapter;
+            Intent theIntent = new Intent(Chapters.this, Verses.class);
+            theIntent.putExtra("aklat", book);
+            theIntent.putExtra("chapter", chapters);
+            startActivity(theIntent);
+        }
+
     }
 }

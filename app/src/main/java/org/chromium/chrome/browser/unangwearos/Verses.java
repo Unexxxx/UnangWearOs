@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -100,11 +101,15 @@ public class Verses extends WearableActivity {
         inputChapter = null;
     }
     public void onInputVerse(View view){
-        String books = verses + verse;
-        saveToSharedPref(books);
+        if(verse == ""){
+            Toast.makeText(this, "Please input Verse", Toast.LENGTH_SHORT).show();
+        }else{
+            String books = verses + verse;
+            saveToSharedPref(books);
+            Intent theIntent = new Intent(Verses.this, MainActivity.class);
+            startActivity(theIntent);
+        }
 
-        Intent theIntent = new Intent(Verses.this, MainActivity.class);
-        startActivity(theIntent);
     }
 
     private void saveToSharedPref(String book){
