@@ -74,19 +74,30 @@ public class Verses extends WearableActivity {
     }
 
     public void onClickDash(View view){
-        tvVerse.setText(verse + "-");
+        if(inputChapter == null){
+            tvVerse.setText("");
+        }else{
+            tvVerse.setText(verse + "-");
+        }
     }
     public void onClickComma(View view){
-        tvVerse.setText(verse + ", ");
+        if(inputChapter == null){
+            tvVerse.setText("");
+        }else{
+            tvVerse.setText(verse + ", ");
+        }
     }
     public void onInputNumbers(int num){
         inputChapter = tvVerse.getText().toString();
         verse = inputChapter + num;
         tvVerse.setText(verse);
+
     }
 
     public void allClear(View view){
         tvVerse.setText("");
+        verse = "";
+        inputChapter = null;
     }
     public void onInputVerse(View view){
         String books = verses + verse;

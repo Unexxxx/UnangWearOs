@@ -29,7 +29,6 @@ public class AlphaOrder extends WearableActivity {
             case R.id.btnV:
                 aOrder("v-z");
                 break;
-
         }
     }
 

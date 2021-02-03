@@ -24,7 +24,9 @@ public class MainActivity extends WearableActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         lvVerse = findViewById(R.id.lvVerse);
+
         SharedPreferences aklatSharedPref = getSharedPreferences("bibiliyeah", Context.MODE_PRIVATE);
         String aklatData = aklatSharedPref.getString("MGA_AKLAT", null);
         Gson gson = new Gson();

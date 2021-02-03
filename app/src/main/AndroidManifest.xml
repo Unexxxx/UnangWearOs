@@ -13,13 +13,13 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
-        android:theme="@android:style/Theme.DeviceDefault">
+        android:theme="@style/Theme.AppCompat">
         <activity android:name=".MgaAklat4"></activity>
         <activity android:name=".MgaAklat3" />
         <activity android:name=".MgaAklat2" />
+        <activity android:name=".MgaAklat1" />
         <activity android:name=".Verses" />
         <activity android:name=".Chapters" />
-        <activity android:name=".MgaAklat1" />
         <activity android:name=".AlphaOrder" />
 
         <uses-library

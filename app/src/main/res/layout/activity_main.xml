@@ -37,7 +37,9 @@
         android:layout_gravity="center_horizontal|bottom"
         android:onClick="onClickAdd"
         android:background="@drawable/addbutton"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        />
+
 
 
 </FrameLayout>
