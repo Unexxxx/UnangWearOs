@@ -65,11 +65,11 @@ public class MainActivity extends WearableActivity {
                 if(aklatData != null){
                     data = gson.fromJson(aklatData, new TypeToken<List<String>>(){}.getType());
                 }
-                for(String itemString: data){
-                    if(mStringArray[i].equalsIgnoreCase(itemString)){
-                        data.remove(i);
-                    }
-                }
+
+                //remove data from listview
+                data.remove(mStringArray[i]);
+                verseArrayAdapter.notifyDataSetChanged();
+
                 mStringArray = new String[data.size()];
                 mStringArray = (String[]) data.toArray(mStringArray);
                 verseArrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, mStringArray);
