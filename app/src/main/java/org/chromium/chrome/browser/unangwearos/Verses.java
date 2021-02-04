@@ -21,7 +21,7 @@ import java.util.List;
 public class Verses extends WearableActivity {
 
     TextView tvTalata, tvVerse;
-    String aklat, chapter, verse, inputChapter;
+    String aklat, chapter, verse="", inputVerse;
     String verses;
 
     @Override
@@ -75,30 +75,34 @@ public class Verses extends WearableActivity {
     }
 
     public void onClickDash(View view){
-        if(inputChapter == null){
+        if(inputVerse == null){
             tvVerse.setText("");
         }else{
             tvVerse.setText(verse + "-");
         }
     }
     public void onClickComma(View view){
-        if(inputChapter == null){
+        if(inputVerse == null){
             tvVerse.setText("");
         }else{
             tvVerse.setText(verse + ", ");
         }
     }
     public void onInputNumbers(int num){
-        inputChapter = tvVerse.getText().toString();
-        verse = inputChapter + num;
-        tvVerse.setText(verse);
+        if(num == 0 && inputVerse == null){
+            tvVerse.setText("");
+        }else{
+            inputVerse = tvVerse.getText().toString();
+            verse = inputVerse + num;
+            tvVerse.setText(verse);
+        }
 
     }
 
     public void allClear(View view){
         tvVerse.setText("");
         verse = "";
-        inputChapter = null;
+        inputVerse = null;
     }
     public void onInputVerse(View view){
         if(verse == ""){

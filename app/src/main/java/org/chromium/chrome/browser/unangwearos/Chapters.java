@@ -12,7 +12,7 @@ import android.widget.Toast;
 public class Chapters extends WearableActivity {
 
     TextView tvAklat, tvChapter;
-    String aklat, chapter, inputChapter;
+    String aklat, chapter="", inputChapter;
 
 
     @Override
