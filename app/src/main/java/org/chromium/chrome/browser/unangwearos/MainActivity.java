@@ -1,31 +1,48 @@
 package org.chromium.chrome.browser.unangwearos;
-import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
+import android.view.ViewTreeObserver;
+import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.ImageView;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.core.widget.NestedScrollView;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
+
+import static android.widget.NumberPicker.OnScrollListener.SCROLL_STATE_FLING;
+import static android.widget.NumberPicker.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL;
+
 public class MainActivity extends WearableActivity {
-    ListView lvVerse;
+
+    ListView rvVerse;
     ArrayAdapter<String> verseArrayAdapter;
     String[] mStringArray = null;
+    ImageButton ivAdd;
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        lvVerse = findViewById(R.id.lvVerse);
+        rvVerse = findViewById(R.id.rv_verse);
+        ivAdd = findViewById(R.id.ivAdd);
+
 
         SharedPreferences aklatSharedPref = getSharedPreferences("bibiliyeah", Context.MODE_PRIVATE);
         String aklatData = aklatSharedPref.getString("MGA_AKLAT", null);
@@ -37,8 +54,8 @@ public class MainActivity extends WearableActivity {
         mStringArray = new String[data.size()];
         mStringArray = (String[]) data.toArray(mStringArray);
         verseArrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mStringArray);
-        lvVerse.setAdapter(verseArrayAdapter);
-        lvVerse.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+        rvVerse.setAdapter(verseArrayAdapter);
+        rvVerse.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
                 SharedPreferences aklatSharedPref = getSharedPreferences("bibiliyeah", Context.MODE_PRIVATE);
@@ -56,13 +73,31 @@ public class MainActivity extends WearableActivity {
                 mStringArray = new String[data.size()];
                 mStringArray = (String[]) data.toArray(mStringArray);
                 verseArrayAdapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_list_item_1, mStringArray);
-                lvVerse.setAdapter(verseArrayAdapter);
+                rvVerse.setAdapter(verseArrayAdapter);
                 saveToSharedPref(data);
                 return false;
             }
         });
-        // Enables Always-on
-//        setAmbientEnabled();
+        rvVerse.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+                int btn_initPosY = ivAdd.getScrollY();
+                if (scrollState == SCROLL_STATE_TOUCH_SCROLL) {
+                    ivAdd.animate().cancel();
+                    ivAdd.animate().translationYBy(150);
+                }else if (scrollState == SCROLL_STATE_FLING) {
+                    ivAdd.animate().cancel();
+                    ivAdd.animate().translationYBy(150);
+                } else {
+                    ivAdd.animate().cancel();
+                    ivAdd.animate().translationY(btn_initPosY);
+                }
+            }
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+
+            }
+        });
     }
     public void onClickAdd(View view){
         Intent intent = new Intent(MainActivity.this,AlphaOrder.class);
@@ -76,4 +111,6 @@ public class MainActivity extends WearableActivity {
         editor.putString("MGA_AKLAT", wholeDataString);
         editor.apply();
     }
+
+
 }

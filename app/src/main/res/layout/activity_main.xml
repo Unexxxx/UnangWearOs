@@ -24,15 +24,15 @@
             android:textStyle="bold" />
 
         <ListView
-            android:id="@+id/lvVerse"
+            android:id="@+id/rv_verse"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_height="match_parent">
+
         </ListView>
 
     </LinearLayout>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/ivAdd"
         android:layout_width="40dp"
         android:layout_height="40dp"
