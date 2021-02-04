@@ -5,25 +5,17 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ListView;
 
-import androidx.core.widget.NestedScrollView;
-import androidx.recyclerview.widget.RecyclerView;
-
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import java.util.ArrayList;
 import java.util.List;
 
-import static android.widget.NumberPicker.OnScrollListener.SCROLL_STATE_FLING;
-import static android.widget.NumberPicker.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL;
 
 public class MainActivity extends WearableActivity {
 
