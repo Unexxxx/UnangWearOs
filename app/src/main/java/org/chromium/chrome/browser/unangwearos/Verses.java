@@ -1,7 +1,5 @@
 package org.chromium.chrome.browser.unangwearos;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.arch.core.executor.TaskExecutor;
 
 import android.content.Context;
 import android.content.Intent;
@@ -96,7 +94,6 @@ public class Verses extends WearableActivity {
             verse = inputVerse + num;
             tvVerse.setText(verse);
         }
-
     }
 
     public void allClear(View view){
