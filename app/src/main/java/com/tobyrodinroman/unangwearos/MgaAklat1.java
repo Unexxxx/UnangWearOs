@@ -1,4 +1,4 @@
-package org.chromium.chrome.browser.unangwearos;
+package com.tobyrodinroman.unangwearos;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MgaAklat2 extends WearableActivity {
+public class MgaAklat1 extends WearableActivity {
 
     ListView lvVerse;
-    String[] verses = {"Habakkuk","Hagai","1 Hari","2 Hari","Hebreo","Hosea","Hukomt","Isaias","Jeremias","Job","Joel","Jonas","Josue","Juan","1 Juan","2 Juan","3 Juan","Judas","Kawikaan","Levitico","Lucas","Malakias","Marcos","Mateo","Mikas","Nahum","Nehemias"};
+    String[] verses = {"Amos","Ang Awit ni Solomon","Ang Mangangaral","Awit","Bilang","Colosas","1 Corinto","2 Corinto","1 Cronica","2 Cronica","Daniel","Deuteronomio","Efeso","Ester","Exodo","Ezekiel","Ezra","Filemon","Filipos","Galacia","Gawa","Genesis"};
     ArrayAdapter<String> verseS;
 
     @Override
@@ -29,7 +29,7 @@ public class MgaAklat2 extends WearableActivity {
 
 
                 String value = (String) parent.getItemAtPosition(position);
-                Intent theIntent = new Intent(MgaAklat2.this, Chapters.class);
+                Intent theIntent = new Intent(MgaAklat1.this, Chapters.class);
                 theIntent.putExtra("aklat", value);
                 startActivity(theIntent);
             }
@@ -39,7 +39,8 @@ public class MgaAklat2 extends WearableActivity {
 
 
 
-
+        // Enables Always-on
+//        setAmbientEnabled();
     }
 
 

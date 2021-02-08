@@ -1,10 +1,9 @@
-package org.chromium.chrome.browser.unangwearos;
+package com.tobyrodinroman.unangwearos;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.wearable.activity.WearableActivity;
 import android.view.View;
-import android.widget.Toast;
 
 public class AlphaOrder extends WearableActivity {
 

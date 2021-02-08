@@ -1,4 +1,4 @@
-package org.chromium.chrome.browser.unangwearos;
+package com.tobyrodinroman.unangwearos;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,10 +8,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-public class MgaAklat1 extends WearableActivity {
+public class MgaAklat3 extends WearableActivity {
 
     ListView lvVerse;
-    String[] verses = {"Amos","Ang Awit ni Solomon","Ang Mangangaral","Awit","Bilang","Colosas","1 Corinto","2 Corinto","1 Cronica","2 Cronica","Daniel","Deuteronomio","Efeso","Ester","Exodo","Ezekiel","Ezra","Filemon","Filipos","Galacia","Gawa","Genesis"};
+    String[] verses = {"Obadias","Pahayag","Panaghoy","1 Pedro","2 Pedro","Roma","Ruth","1 Samuel","2 Samuel","Santiago","1 Tesalonica","2 Tesalonica","1 Timoteo","2 Timoteo","Tito"};
     ArrayAdapter<String> verseS;
 
     @Override
@@ -29,7 +29,7 @@ public class MgaAklat1 extends WearableActivity {
 
 
                 String value = (String) parent.getItemAtPosition(position);
-                Intent theIntent = new Intent(MgaAklat1.this, Chapters.class);
+                Intent theIntent = new Intent(MgaAklat3.this, Chapters.class);
                 theIntent.putExtra("aklat", value);
                 startActivity(theIntent);
             }

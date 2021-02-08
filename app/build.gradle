@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "org.chromium.chrome.browser.unangwearos"
+        applicationId "com.tobyrodinroman.unangwearos"
         minSdkVersion 28
         targetSdkVersion 30
         versionCode 1

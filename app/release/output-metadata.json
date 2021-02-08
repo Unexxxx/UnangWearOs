@@ -4,7 +4,7 @@
     "type": "APK",
     "kind": "Directory"
   },
-  "applicationId": "org.chromium.chrome.browser.unangwearos",
+  "applicationId": "com.tobyrodinroman.unangwearos",
   "variantName": "processReleaseResources",
   "elements": [
     {

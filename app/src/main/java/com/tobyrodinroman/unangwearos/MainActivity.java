@@ -1,4 +1,4 @@
-package org.chromium.chrome.browser.unangwearos;
+package com.tobyrodinroman.unangwearos;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
